@@ -1,7 +1,3 @@
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
-
-Update your Jenkinsfile
 pipeline {
     agent any
 
