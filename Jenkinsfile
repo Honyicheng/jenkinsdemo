@@ -14,7 +14,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t dewixaltius/jenkins-demo .'
+                bat 'docker build -t victoryhon/jenkins-demo .'
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     bat 'docker login -u victoryhon -p Singapore88$'
-                    bat 'docker push dewixaltius/jenkins-demo'
+                    bat 'docker push victoryhon/jenkins-demo'
                 }
             }
         }
