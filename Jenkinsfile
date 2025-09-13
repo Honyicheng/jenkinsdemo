@@ -25,8 +25,8 @@ pipeline {
 
          stage('Deploy Docker Image') {
             steps {
-                  bat 'docker rm -f app'
-                  bat 'docker run -d -p "8888:80 --name app html-demo:latest'
+                  bat 'docker rm -f app 2>NUL'
+                  bat 'docker run -d --name app -p 8888:80 html-demo:latest'
         
                 }
             }
