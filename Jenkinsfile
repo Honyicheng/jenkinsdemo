@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t victoryhon/jenkins-demo .'
+                bat 'docker build -t victoryhon/html-demo:lastest .'
             }
         }
 
@@ -18,16 +18,15 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     bat 'docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%'
-                    bat 'docker push victoryhon/jenkins-demo'
+                    bat 'docker push victoryhon/html-demo:latest'
                 }
             }
         }
 
          stage('Deploy Docker Image') {
             steps {
-                  bat 'docker build -f Dockerfile -t html-app:latest .'
                   bat 'docker rm -f app'
-                  bat 'docker run -d -p "8888:80 --name app html-app:lastest'
+                  bat 'docker run -d -p "8888:80 --name app html-demo:latest'
         
                 }
             }
