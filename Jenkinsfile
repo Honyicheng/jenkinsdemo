@@ -22,5 +22,15 @@ pipeline {
                 }
             }
         }
+
+         stage('Deploy Docker Image') {
+            steps {
+                  bat 'docker build -f Dockerfile -t html-app:latest .'
+                  bat 'docker rm -f app'
+                  bat 'docker run -d -p "8888:80 --name app html-app:lastest'
+        
+                }
+            }
+        }
     }
 }
