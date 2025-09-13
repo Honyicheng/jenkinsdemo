@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t victoryhon/html-demo:lastest .'
+                bat 'docker build -t victoryhon/html-demo:latest .'
             }
         }
 
